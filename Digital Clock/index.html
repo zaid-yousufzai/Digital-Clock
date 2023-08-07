@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        .main{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url(https://images.unsplash.com/photo-1524678714210-9917a6c619c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dGltZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=60);
+            background-repeat: no-repeat;
+            background-size: cover;
+        
+            
+            
+
+        }
+        .clock{
+            
+            
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+        }
+        h2{
+            font-size: 10vw;
+            padding: 4vw;
+            
+        }
+    </style>
+</head>
+<body onload="clock()">
+
+    <div class="main">
+        <div class="clock">
+            
+<h2></h2>
+        </div>
+    </div>
+</body>
+<script>
+    function clock(){
+        var d= new Date();
+        var h=d.getHours();
+        var m=d.getMinutes();
+        var s=d.getSeconds();
+        var session='PM'
+
+        if(h>12)
+        {
+            h=h-12;
+        }
+        if(h>=12)
+        {
+            if(session=="PM")
+            {
+                session="AM";
+            }
+            else{
+                session="PM";
+            }
+        }
+        h=h<10?"0"+h:h;
+        m=m<10?"0"+m:m;
+        s=s<10?"0"+s:s;
+        var time=h+" : "+m+" : "+s+" "+session;
+        document.getElementsByTagName('h2')[0].innerHTML=time;
+        setTimeout(clock,1000);
+    }
+</script>
+</html>
